@@ -13,7 +13,7 @@ var remainingTickets uint = 50
 var bookings []string
 
 func main() {
-
+	getFirstNames()
 	greetUsers()
 
 	for {
@@ -51,6 +51,7 @@ func main() {
 				//var names []string
 				for _, booking := range bookings {
 					var names = strings.Fields(booking)
+					fmt.Println(names)
 					firstNames = append(firstNames, names[0])
 				}
 
@@ -69,7 +70,6 @@ func greetUsers() {
 }
 
 func getFirstNames() []string {
-
 	firstNames := []string{}
 	var names []string
 	for _, booking := range bookings {
@@ -117,9 +117,8 @@ func getUserInput() (string, string, string, uint) {
 func bookTicket(userTickets uint, email string, firstName string, lastName string) []string {
 
 	remainingTickets = remainingTickets - userTickets
-
-	bookings := append(bookings, firstName+" "+lastName)
-
+	bookings = append(bookings, firstName+" "+lastName)
+	fmt.Println(bookings)
 	fmt.Printf("Thank you %v %v, you have booked %v tickets  successfully. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
 
